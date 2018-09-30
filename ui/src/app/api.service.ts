@@ -15,23 +15,17 @@ export class ApiService {
    * Get a recipe from the API server.
    */
   public async getRecipe(): Promise<Recipe> {
-    const res = <GoHttpResponse>(await this.http.get(`${this.url}/test`).toPromise());
+    const res = <GoHttpResponse>(await this.http.get(this.url).toPromise());
     if (!res.ok) {
-      throw new Error("Ok response not received.");
+      throw new Error("Ok response not received: " +  res.err);
     }
-    return <Recipe>(res.data);
 
-    /*
-    return <Recipe>JSON.parse(
-      `
-      {"title":"This is a title","picture":"https://i.imgur.com/6ygY0ZK.png","story":"test test test this is a story about this","rating":5,"chef":"Boyardee","ingredients":["2 eggs","one cup of flour"],"steps":["Preheat the oven to 400","Burn the eggs","Pour flour on top"]}
-      `
-    )
-    */
+    return <Recipe>(res.data);
   }
 }
 
 class GoHttpResponse {
   public ok: boolean;
-  public data: any;
+  public data?: any;
+  public err?: string;
 }
