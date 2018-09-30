@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ApiService} from "../api.service";
 import {StateService} from "../state.service";
 
@@ -12,7 +12,7 @@ export class HeaderComponent {
   public loading: boolean;
 
   constructor(private api: ApiService, private state: StateService) {
-    this.getRecipe();
+    // this.getRecipe();
   }
 
   public async getRecipe() {

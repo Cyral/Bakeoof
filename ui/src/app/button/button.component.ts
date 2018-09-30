@@ -4,10 +4,10 @@ import {Component, Input} from '@angular/core';
   selector: 'app-button',
   template: `
     <div>
+      <ng-content></ng-content>
       <span class="loader" *ngIf="loading">
         <i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
       </span>
-      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['./button.component.styl']
