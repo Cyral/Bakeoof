@@ -2,12 +2,13 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
 type okResponse struct {
-	Ok bool `json:"ok"`
-  Data interface{} `json:"data"`
+	Ok   bool        `json:"ok"`
+	Data interface{} `json:"data"`
 }
 
 type errResponse struct {
@@ -15,13 +16,59 @@ type errResponse struct {
 	Error string `json:"error"`
 }
 
+// export class Recipe {
+//   public title: string;
+//   public picture: string;
+//   public story: string;
+//   public rating: number;
+//   public chef: string;
+//   public ingredients: string[];
+//   public steps: string[];
+// }
+
+// RecipeOutput is what is sent to the front end
+type RecipeOutput struct {
+  Title string `json:"title"`
+  Picture string `json:"picture"`
+  Story string `json:"story"`
+  Rating int `json:"rating"`
+  Chef string `json:"chef"`
+  Ingredients []string `json:"ingredients"`
+  Steps []string `json:"steps"`
+}
+
 // RootController handles the / endpoint
 func RootController(w http.ResponseWriter, r *http.Request) {
+	recipes, err := GetRecipes()
+	if err != nil {
+		sendError(err, w)
+	}
+
+	fmt.Println(recipes)
+
 	sendResponse("Hello, World!", w)
 }
 
+// TestController for testing frontend
+func TestController(w http.ResponseWriter, r *http.Request) {
+  sendResponse(testResponse(), w)
+}
+
+func testResponse() RecipeOutput {
+  return RecipeOutput{
+    Title: "This is a title",
+    Picture: "https://imgur.com/6ygY0ZK",
+    Story: "test test test this is a story about this",
+    Rating: 5,
+    Chef: "Boyardee",
+    Ingredients: []string{"2 eggs", "one cup of flour"},
+    Steps: []string{"Preheat the oven to 400", "Burn the eggs", "Pour flour on top"},
+  }
+}
+
 func sendResponse(data interface{}, w http.ResponseWriter) {
-	w.Header().Set("Content-Type", "application/json")
+  w.Header().Set("Content-Type", "application/json")
+  w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	json.NewEncoder(w).Encode(okResponse{Ok: true, Data: data})
 }
