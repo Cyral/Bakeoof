@@ -32,13 +32,6 @@ func RootController(w http.ResponseWriter, r *http.Request) {
 	sendResponse(getRecipe(w), w)
 }
 
-// TestController for testing frontend
-func TestController(w http.ResponseWriter, r *http.Request) {
-	ingredients := []string{"Something"}
-	url := GetPictureURL(Recipe{Title: "Beef Pastry", Ingredients: ingredients})
-	sendResponse(url, w)
-}
-
 func getRecipe(w http.ResponseWriter) RecipeOutput {
 	recipe, err := GetRecipe()
 	if err != nil {
@@ -54,18 +47,6 @@ func getRecipe(w http.ResponseWriter) RecipeOutput {
 		Chef:        GetChef(),
 		Ingredients: recipe.Ingredients,
 		Steps:       GetSteps(recipe),
-	}
-}
-
-func testResponse() RecipeOutput {
-	return RecipeOutput{
-		Title:       "This is a title",
-		Picture:     "https://i.imgur.com/6ygY0ZK.png",
-		Story:       "test test test this is a story about this",
-		Rating:      5,
-		Chef:        "Boyardee",
-		Ingredients: []string{"2 eggs", "one cup of flour"},
-		Steps:       []string{"Preheat the oven to 400", "Burn the eggs", "Pour flour on top"},
 	}
 }
 

@@ -9,7 +9,6 @@ const port = "8080"
 
 func main() {
 	http.HandleFunc("/", RootController)
-	http.HandleFunc("/test", TestController)
 
 	fmt.Printf("Web server started on port %s\n", port)
 
