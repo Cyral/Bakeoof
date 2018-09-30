@@ -13,7 +13,7 @@ func GetChef() string {
 }
 
 func createLastName() string {
-	numParts := rand.Intn(4) + 1
+	numParts := rand.Intn(3) + 1
 
 	nameParts := nameParts()
 
@@ -52,11 +52,8 @@ func nameParts() []string {
 		"ski",
 		"boy",
 		"ardee",
-		"gor",
-		"don",
 		"ram",
 		"say",
-		"guy",
 		"fi",
 		"eri",
 	}
