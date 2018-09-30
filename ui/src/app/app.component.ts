@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <app-header></app-header>
     <app-recipe></app-recipe>
+    <app-footer></app-footer>
   `,
   styles: []
 })

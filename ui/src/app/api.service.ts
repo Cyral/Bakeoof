@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly url: string = "/api";
+  private readonly url: string = "https://bakeoof.com/api";
   constructor(private http: HttpClient) {
 
   }
