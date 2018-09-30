@@ -15,9 +15,15 @@ export class ApiService {
    * Get a recipe from the API server.
    */
   public async getRecipe(): Promise<Recipe> {
-    const res = <GoHttpResponse>(await this.http.get(this.url).toPromise());
+    let res: GoHttpResponse;
+    try {
+      res = <GoHttpResponse>(await this.http.get(this.url).toPromise());
+    } catch (e) {
+      throw new Error("Error getting results: " + e);
+    }
+
     if (!res.ok) {
-      throw new Error("Ok response not received: " +  res.err);
+      throw new Error("Ok response not received: " + res.err);
     }
 
     return <Recipe>(res.data);
