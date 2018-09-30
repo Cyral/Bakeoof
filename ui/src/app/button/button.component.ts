@@ -14,5 +14,9 @@ import {Component, Input} from '@angular/core';
 })
 export class ButtonComponent {
   @Input()
-  public loading?: boolean = true;
+  public loading?: boolean;
+
+  constructor() {
+
+  }
 }

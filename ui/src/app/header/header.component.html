@@ -2,10 +2,9 @@
   <div class="container">
     <h1>Bakeoof</h1>
     <h3>Recipe Generator</h3>
-    <app-button>
+    <app-button (click)="getRecipe()" [loading]="loading">
       Generate
     </app-button>
   </div>
-
 </div>
 
