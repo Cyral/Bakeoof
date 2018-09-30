@@ -14,6 +14,7 @@ import (
 type Recipe struct {
 	Title       string   `{json:"name"}`
 	Ingredients []string `{json:"ingredients"}`
+	BakeType    string
 }
 
 // CreateRecipeeList returns the parsed json recipee list
@@ -87,6 +88,7 @@ func GetRecipe() (Recipe, error) {
 
 	finalRecipeName.WriteString(bakeTypes[bakedChoice])
 	newRecipe.Title = finalRecipeName.String()
+	newRecipe.BakeType = bakeTypes[bakedChoice]
 
 	return newRecipe, nil
 }
