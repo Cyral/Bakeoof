@@ -6,6 +6,10 @@ Bakeoof generates a absurd random cake, cookie, or muffin themed recipe with dir
 
 Built with Go and Angular.
 
+Data is generated from a dataset of recipes and ingredients to craft each generated recipe
+
+The images are pulled from the bing image search api using the generated title
+
 ## Rules
 
 1. Your application must be baking related
