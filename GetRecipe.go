@@ -73,7 +73,7 @@ func GetRecipe() (Recipe, error) {
 
 	for i := 0; i < numIngredients; i++ {
 		choiceRecipe = r1.Intn(numRecipes)
-		choiceIngredient = r1.Intn(100) % len(recipes[choiceRecipe].Ingredients)
+		choiceIngredient = (r1.Intn(100) + 1) % len(recipes[choiceRecipe].Ingredients)
 
 		newRecipe.Ingredients[i] = recipes[choiceRecipe].Ingredients[choiceIngredient]
 
