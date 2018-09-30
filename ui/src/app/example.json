@@ -1,0 +1,9 @@
+{
+  "title": "This is a title",
+  "picture": "https://imgur.com/6ygY0ZK",
+  "chef": "Boyardee",
+  "rating": 5,
+  "story": "test test test this is a story about this",
+  "ingredients": ["2 Eggs", "1 cup flour"],
+  "steps": ["Preheat the oven to 400", "Burn the eggs", "Pour flour on top"]
+}
