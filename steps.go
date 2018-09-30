@@ -1,52 +1,52 @@
 package main
 
-import(
+import (
 	"fmt"
 	"math/rand"
 	"time"
 )
 
-func degrees()int{
+func degrees() int {
 	return rand.Intn((450 - 300) + 400)
 }
-func preheat() string{
-	firstStep := fmt.Sprintf("Preheat oven to %d degrees \n",degrees())
+func preheat() string {
+	firstStep := fmt.Sprintf("Preheat oven to %d degrees \n", degrees())
 	return firstStep
 }
-func cookTime() int{
+func cookTime() int {
 	rand.Seed(time.Now().Unix())
 	return rand.Intn((30 - 20) + 30)
 }
 
-func coolTime() int{
+func coolTime() int {
 	rand.Seed(time.Now().Unix())
-	return rand.Intn((30 - 5 ) + 5)
+	return rand.Intn((30 - 5) + 5)
 }
 
-func getEggs() int{
+func getEggs() int {
 	return rand.Intn(4) + 1
 }
-func beatEggs() string{
+func beatEggs() string {
 	eggStep := fmt.Sprintf("Beat %d eggs in a %s sized bowl \n", getEggs(), bowlSize())
 	return eggStep
 }
 
-func numMuff() int{
+func numMuff() int {
 	n := rand.Intn(13) + 1
 	return n
 }
 
-func getMuffinTins() string{
+func getMuffinTins() string {
 	muffinStep := fmt.Sprintf("Grease %d cup muffin pan or use %d Muffin Liners \n", numMuff(), numMuff())
 	return muffinStep
 }
 
-func pourMuffin() string{
+func pourMuffin() string {
 	pourMuffin := fmt.Sprintf("Pour mixture into %d muffin tins \n", numMuff())
 	return pourMuffin
 }
 
-func bowlSize() string{
+func bowlSize() string {
 	bowls := [4]string{"small", "medium", "large", "giant"}
 	return bowls[rand.Intn(4)]
 }
@@ -66,7 +66,7 @@ func fillMuff() string {
 	return fillStep
 }
 
-func muffLayer(muffArray []string) string{
+func muffLayer(muffArray []string) string {
 	layerStep := fmt.Sprintf("Chop the %s into %s pieces. Roast it on the stovetop, Set aside for later", muffArray[2], bowlSize())
 	return layerStep
 }
@@ -81,28 +81,28 @@ func combineRemain() string {
 	return combineStep
 }
 
-func cookMuff() string{
+func cookMuff() string {
 	cookStep := fmt.Sprintf("Bake for %d minutes\n", cookTime())
 	return cookStep
 }
 
-func coolLocation() string{
+func coolLocation() string {
 	bowls := [2]string{"refrigerator", "freezer"}
 	return bowls[rand.Intn(2)]
 }
 
-func coolAll() string{
+func coolAll() string {
 	coolStep := fmt.Sprintf("Cool for %d minutes in the %s\n", coolTime(), coolLocation())
 	return coolStep
 }
 
 func cakeContents() string {
-	combineStep := fmt.Sprintf("put contents of bowl into  cake pan. Put directly into oven %d minutes.\n",cookTime())
+	combineStep := fmt.Sprintf("put contents of bowl into  cake pan. Put directly into oven %d minutes.\n", cookTime())
 	return combineStep
 }
 
-func CookCake() []string{
-	steps:= make([]string,7)
+func CookCake() []string {
+	steps := make([]string, 5)
 	steps[0] = preheat()
 	steps[1] = beatEggs()
 	steps[2] = combineAll()
@@ -110,8 +110,6 @@ func CookCake() []string{
 	steps[4] = coolAll()
 	return steps
 }
-
-
 
 func CookMuffin(muffArray []string) []string {
 	rand.Seed(time.Now().Unix())
@@ -129,6 +127,7 @@ func CookMuffin(muffArray []string) []string {
 		steps[4] = pourMuffin()
 		steps[5] = cookMuff()
 		steps[6] = coolAll()
+		return steps[0:6]
 	} else if randSelect == 1 {
 		steps[0] = preheat()
 		steps[1] = getMuffinTins()
@@ -138,6 +137,7 @@ func CookMuffin(muffArray []string) []string {
 		steps[5] = cookMuff()
 		steps[6] = fillMuff()
 		steps[7] = coolAll()
+		return steps[0:7]
 	} else if randSelect == 2 {
 		steps[0] = preheat()
 		steps[1] = getMuffinTins()
@@ -148,26 +148,28 @@ func CookMuffin(muffArray []string) []string {
 		steps[6] = cookMuff()
 		steps[7] = layerMuff()
 		steps[8] = coolAll()
+		return steps[0:8]
 	}
-	return steps
+
+	return nil
 }
 
 func cookieContents() string {
-	combineStep := fmt.Sprintf("Mix eggs with melted butter, flour,baking soda, and salt\n",)
+	combineStep := fmt.Sprintf("Mix eggs with melted butter, flour,baking soda, and salt\n")
 	return combineStep
 }
-func cookieAddIngridients() string{
-	combineStep := fmt.Sprintf(" add finely chopped -ingridients here-  into the bowl. Mix thourghly\n",)
-	return combineStep
-}
-
-func cookieCookInstruc() string{
-	combineStep := fmt.Sprintf(" For each cookie, drop 1/4 a cup onto the baking tray\n",)
+func cookieAddIngridients() string {
+	combineStep := fmt.Sprintf(" add finely chopped -ingridients here-  into the bowl. Mix thourghly\n")
 	return combineStep
 }
 
-func CookCookies()[]string{
-	steps := make([]string, 7)
+func cookieCookInstruc() string {
+	combineStep := fmt.Sprintf(" For each cookie, drop 1/4 a cup onto the baking tray\n")
+	return combineStep
+}
+
+func CookCookies() []string {
+	steps := make([]string, 6)
 	steps[0] = preheat()
 	steps[1] = beatEggs()
 	steps[2] = cookieContents()
@@ -179,7 +181,7 @@ func CookCookies()[]string{
 
 func GetSteps(recipe Recipe) []string {
 	bakeType := recipe.BakeType
-	
+
 	if bakeType == "Muffins" {
 		return CookMuffin(recipe.Ingredients)
 	} else if bakeType == "Cake" {
@@ -189,4 +191,3 @@ func GetSteps(recipe Recipe) []string {
 	}
 	return nil
 }
-
