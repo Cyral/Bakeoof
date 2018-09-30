@@ -38,7 +38,7 @@ func GetPictureURL(recipe Recipe) string {
 		}
 	}
 
-	return json.Value[0].ContentURL
+	return ""
 }
 
 func parseJSON(body []byte) (*Response, error) {
