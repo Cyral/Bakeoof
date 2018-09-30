@@ -3,12 +3,24 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 func preheat() string{
 	firstStep := fmt.Sprintf("Preheat oven to %d degrees \n", rand.Intn(350))
 	return firstStep
 }
+
+func cookTime() int{
+	rand.Seed(time.Now().Unix())
+	return rand.Intn((30 - 20) + 30)
+}
+
+func coolTime() int{
+	rand.Seed(time.Now().Unix())
+	return rand.Intn((30 - 5 ) + 5)
+}
+
 
 func getEggs() int{
 	return rand.Intn(4) + 1
@@ -33,11 +45,13 @@ func pourMuffin() string{
 	return pourMuffin
 }
 
-
-func main() {
-	fmt.Print(preheat())
-	fmt.Print(beatEggs())
-	fmt.Print(getMuffinTins())
-	fmt.Print(pourMuffin())
-
+func bowlSize() string{
+	bowls := [4]string{"small", "medium", "large", "giant"}
+	return bowls[rand.Intn(4) - 1]
 }
+
+func combineAll() string {
+	combineStep := fmt.Sprintf("Mix all your ingridents in a %s size bowl", bowlSize())
+	return combineStep
+}
+
