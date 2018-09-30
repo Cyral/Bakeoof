@@ -14,7 +14,7 @@ type Recipee struct {
 	Ingredients []string `{json:"ingredients"}`
 }
 
-func createRecipeeList() []Recipee {
+func CreateRecipeeList() []Recipee {
 	jsonFile, err := os.Open("full_format_recipes.json")
 
 	// check is see if we successfully loaded the json
