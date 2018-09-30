@@ -28,12 +28,32 @@ type RecipeOutput struct {
 
 // RootController handles the / endpoint
 func RootController(w http.ResponseWriter, r *http.Request) {
-	sendResponse("Hello, World!", w)
+	sendResponse(getRecipe(w), w)
 }
 
 // TestController for testing frontend
 func TestController(w http.ResponseWriter, r *http.Request) {
-	sendResponse(testResponse(), w)
+	ingredients := []string{"Something"}
+	url := GetPictureURL(Recipe{Title: "Beef Pastry", Ingredients: ingredients})
+	sendResponse(url, w)
+}
+
+func getRecipe(w http.ResponseWriter) RecipeOutput {
+	recipe, err := GetRecipe()
+	if err != nil {
+		sendError(err, w)
+		return RecipeOutput{}
+	}
+
+	return RecipeOutput{
+		Title:       recipe.Title,
+		Picture:     GetPictureURL(recipe),
+		Story:       "Story",
+		Rating:      5,
+		Chef:        GetChef(),
+		Ingredients: recipe.Ingredients,
+		Steps:       CookMuffin(),
+	}
 }
 
 func testResponse() RecipeOutput {
