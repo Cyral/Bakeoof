@@ -1,17 +1,30 @@
 <div class="container" *ngIf="recipe">
-  <h2>
-    {{recipe.title}}
-  </h2>
-  <p>By Chef{{recipe.chef}}</p>
-  <p>{{recipe.story}}</p>
-  <ul>
-    <li *ngFor="let ingredient of recipe.ingredients">
-      {{ingredient}}
-    </li>
-  </ul>
-  <ol>
-    <li *ngFor="let step of recipe.steps">
-      {{step}}
-    </li>
-  </ol>
+  <div class="recipe-image" [ngStyle]="{backgroundImage: 'url(' + recipe.picture + ')'}">
+    <div class="recipe-title">
+      <h2>
+        {{recipe.title}}
+      </h2>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-body-top">
+      <div class="recipe-chef">
+        <p class="secondary">By Chef {{recipe.chef}}</p>
+      </div>
+      <div class="recipe-rating">
+        <i class="fa fa-star" *ngFor="let star of getStars()"></i>
+      </div>
+    </div>
+    <p class="copy">{{recipe.story}}</p>
+    <ul>
+      <li *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient}}
+      </li>
+    </ul>
+    <ol>
+      <li *ngFor="let step of recipe.steps">
+        {{step}}
+      </li>
+    </ol>
+  </div>
 </div>
