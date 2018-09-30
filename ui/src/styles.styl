@@ -1,16 +1,20 @@
 @import "../node_modules/nib/index.styl"
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Open+Sans:400,600,700');
 
 global-reset()
 
 $font-family = 'Open Sans', sans-serif
-$accent-color = #0080C1
+$alt-font-family = 'Libre Baskerville', serif
+$accent-color = #ff8c2e
+$gray-color = #999
 
 body, html
-  font-size 18px
+  font-size 16px
   font-family $font-family
   line-height 1.3em
   color #333
+  background-color #ffdebe
+  background-image linear-gradient(to bottom right, #ffbecc, #ffdebe)
 
 .container
   margin 0 auto
@@ -27,5 +31,46 @@ h3
 p
   margin-bottom 0.5em
 
-button
-  padding 0.5rem
+// Lists
+ul, ol
+  margin-bottom 1em
+ul
+  li
+    line-height 2em
+    &:before
+      content ''
+      height .5em
+      width .5em
+      background $gray-color
+      display inline-block
+      position relative
+      transform rotate(45deg)
+      top -1px
+      left 0
+      margin-right 10px
+ol
+  counter-reset counter
+  margin-bottom 0
+  li
+    counter-increment counter
+    line-height 2em
+    &:before
+      content counter(counter)
+      color $gray-color
+      font-family $alt-font-family
+      font-size 1.5em
+      display inline-block
+      width 20px
+      text-align center
+      position relative
+      top 2px
+      margin-left -5px
+      margin-right 4px
+
+.secondary
+  color $gray-color
+
+p.copy
+  text-indent -2em
+  padding-left 2em
+  display inline-block

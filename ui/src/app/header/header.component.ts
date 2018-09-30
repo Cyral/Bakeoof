@@ -12,7 +12,7 @@ export class HeaderComponent {
   public loading: boolean;
 
   constructor(private api: ApiService, private state: StateService) {
-
+    this.getRecipe();
   }
 
   public async getRecipe() {

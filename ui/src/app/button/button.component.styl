@@ -3,12 +3,11 @@
 :host
   display inline-block
   user-select none
-  background-color #fff
-  color $accent-color
+  background-color $accent-color
+  color white
   padding 0.75em 1.25em
-  border-radius 5px
+  border-radius 25px
   border none
-  font-weight 500
   font-size 18px
   font-family $font-family
   cursor pointer
@@ -16,8 +15,11 @@
   margin-top 1em
   outline none
   transition all .2s
+  text-transform uppercase
+  font-weight 600
+  box-shadow 0 3px 6px alpha(darken($accent-color, 25%), 25%)
   &:hover:not([disabled])
-    background-color darken(#fff, 5%)
+    background-color darken($accent-color, 5%)
     transform translateY(-1px)
   &:active:not([disabled])
     transform translateY(1px) !important
@@ -36,6 +38,6 @@
     margin-right 2px
     position relative
     top -1px
-    color $accent-color
+    color white
     margin-top 0
     margin-bottom 0
