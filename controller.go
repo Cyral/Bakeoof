@@ -53,7 +53,7 @@ func getRecipe(w http.ResponseWriter) RecipeOutput {
 		Rating:      rand.Intn(5) + 1,
 		Chef:        GetChef(),
 		Ingredients: recipe.Ingredients,
-		Steps:       CookMuffin(),
+		Steps:       GetSteps(recipe),
 	}
 }
 
