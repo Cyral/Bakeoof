@@ -64,7 +64,6 @@ func GetRecipe() (Recipe, error) {
 
 	// Denotes the recipee we will iteratively randomly choose from our list of recipes
 	// as well as the number of ingredients that recipe has (so we can choose one from them)
-	var choiceNumIngredients int
 	var choiceIngredient int
 	var choiceRecipe int
 
@@ -74,8 +73,7 @@ func GetRecipe() (Recipe, error) {
 
 	for i := 0; i < numIngredients; i++ {
 		choiceRecipe = r1.Intn(numRecipes)
-		choiceNumIngredients = len(recipes[choiceRecipe].Ingredients)
-		choiceIngredient = r1.Intn(choiceNumIngredients)
+		choiceIngredient = r1.Intn(100) % len(recipes[choiceRecipe].Ingredients)
 
 		newRecipe.Ingredients[i] = recipes[choiceRecipe].Ingredients[choiceIngredient]
 
