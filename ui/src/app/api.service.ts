@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly url: string = "http://b2165353.ngrok.io";
+  private readonly url: string = "https://b2165353.ngrok.io";
   constructor(private http: HttpClient) {
 
   }
