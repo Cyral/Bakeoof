@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strings"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -30,6 +31,12 @@ func GetPictureURL(recipe Recipe) string {
 	}
 
 	json, err := parseJSON(resp)
+
+	for _, img := range json.Value {
+		if strings.HasPrefix(img.ContentURL, "https") {
+			return img.ContentURL
+		}
+	}
 
 	return json.Value[0].ContentURL
 }
