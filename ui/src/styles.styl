@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/nib/index.styl"
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+global-reset()
+
+$font-family = 'Open Sans', sans-serif
+$accent-color = #0080C1
+
+body, html
+  font-size 18px
+  font-family $font-family
+
+.container
+  margin 0 auto
+  max-width 800px
+
+h1
+  font-size 3rem
+  margin-bottom 0.5em
+
+h3
+  font-size 1.5rem
+  margin-bottom 0.5em
+
+button
+  padding 0.5rem
