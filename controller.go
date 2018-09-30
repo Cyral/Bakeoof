@@ -39,7 +39,7 @@ func TestController(w http.ResponseWriter, r *http.Request) {
 func testResponse() RecipeOutput {
 	return RecipeOutput{
 		Title:       "This is a title",
-		Picture:     "https://imgur.com/6ygY0ZK",
+		Picture:     "https://i.imgur.com/6ygY0ZK.png",
 		Story:       "test test test this is a story about this",
 		Rating:      5,
 		Chef:        "Boyardee",
