@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"math/rand"
 	"net/http"
 )
 
@@ -48,8 +49,8 @@ func getRecipe(w http.ResponseWriter) RecipeOutput {
 	return RecipeOutput{
 		Title:       recipe.Title,
 		Picture:     GetPictureURL(recipe),
-		Story:       "Story",
-		Rating:      5,
+		Story:       "",
+		Rating:      rand.Intn(5) + 1,
 		Chef:        GetChef(),
 		Ingredients: recipe.Ingredients,
 		Steps:       CookMuffin(),
