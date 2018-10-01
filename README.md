@@ -10,7 +10,7 @@ Bakeoof generates a absurd random cake, cookie, or muffin themed recipe with dir
 
 * Built with Go and Angular.
 
-## Rules
+## Hackathon Rules
 
 1. Your application must be baking related
 
